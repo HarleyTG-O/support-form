@@ -125,55 +125,62 @@
   </form>
 
   <script>
-    document.getElementById("support-form").addEventListener("submit", async (event) => {
-      event.preventDefault();
+  document.getElementById("support-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-      // Collect form data
-      const formData = new FormData(event.target);
-      const fullName = `${formData.get("first-name")} ${formData.get("last-name")}`;
-      const email = formData.get("email");
-      const profileUrl = formData.get("profile-url");
-      const supportNeeded = formData.get("support-needed");
+    // Generate a 4-digit Support ID
+    const supportId = Math.floor(1000 + Math.random() * 9000); // Generates a random 4-digit number
 
-      // Discord Webhook URL
-      const webhookUrl = "https://discord.com/api/webhooks/1330156339623755817/RdE4YhYzGiz90JcW_Hp8YrYrxJxfpoT1rjyW8YzzkuytZE9ttgUXd6zyyl_V7VzuUG6N";
+    // Set the Support ID in the input field
+    document.getElementById("support-id").value = supportId;
 
-      // Prepare the message payload
-      const payload = {
-        username: "Harley's Forum - Support Form",
-        embeds: [
-          {
-            title: "New Support Request",
-            fields: [
-              { name: "Full Name", value: fullName, inline: true },
-              { name: "Email", value: email, inline: true },
-              { name: "Profile URL", value: profileUrl, inline: false },
-              { name: "Support Needed", value: supportNeeded, inline: false }
-            ],
-            footer: { text: "Support Form Submission" },
-            timestamp: new Date().toISOString()
-          }
-        ]
-      };
+    // Collect form data
+    const formData = new FormData(event.target);
+    const fullName = `${formData.get("first-name")} ${formData.get("last-name")}`;
+    const email = formData.get("email");
+    const profileUrl = formData.get("profile-url");
+    const supportNeeded = formData.get("support-needed");
 
-      try {
-        const response = await fetch(webhookUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
+    // Discord Webhook URL
+    const webhookUrl = "https://discord.com/api/webhooks/1330156339623755817/RdE4YhYzGiz90JcW_Hp8YrYrxJxfpoT1rjyW8YzzkuytZE9ttgUXd6zyyl_V7VzuUG6N";
 
-        if (response.ok) {
-          alert("Your support request has been submitted!");
-          event.target.reset();
-        } else {
-          alert("Failed to send the request. Please try again.");
+    // Prepare the message payload
+    const payload = {
+      username: "Harley's Forum - Support Form",
+      embeds: [
+        {
+          title: "New Support Request",
+          fields: [
+            { name: "Support ID", value: supportId, inline: true },
+            { name: "Full Name", value: fullName, inline: true },
+            { name: "Email", value: email, inline: true },
+            { name: "Profile URL", value: profileUrl, inline: false },
+            { name: "Support Needed", value: supportNeeded, inline: false }
+          ],
+          footer: { text: "Support Form Submission" },
+          timestamp: new Date().toISOString()
         }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred. Please try again later.");
+      ]
+    };
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        alert("Your support request has been submitted!");
+        event.target.reset();
+      } else {
+        alert("Failed to send the request. Please try again.");
       }
-    });
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again later.");
+    }
+  });
   </script>
 </body>
 </html>

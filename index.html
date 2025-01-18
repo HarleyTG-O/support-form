@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harley's Clan Forum - Support</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Harley's Clan Forum - Support</h1>
+  <form id="support-form">
+    <label for="first-name">First Name</label>
+    <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+
+    <label for="last-name">Last Name</label>
+    <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+    <label for="profile-url">Profile URL</label>
+    <input type="url" id="profile-url" name="profile-url" placeholder="https://forum.harleytg.online/u/" required>
+
+    <label for="support-needed">Support Needed</label>
+    <textarea id="support-needed" name="support-needed" placeholder="Describe the support you need..." required></textarea>
+
+    <label>
+      <input type="checkbox" id="agree" name="agree" required>
+      I agree to the <a href="https://forum.harleytg.online/p/5-terms-of-service" target="_blank">Terms & Conditions</a>
+      and <a href="https://forum.harleytg.online/p/4-privicy-policy" target="_blank">Privacy Policy</a>.
+    </label>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("support-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      // Collect form data
+      const formData = new FormData(event.target);
+      const fullName = `${formData.get("first-name")} ${formData.get("last-name")}`;
+      const email = formData.get("email");
+      const profileUrl = formData.get("profile-url");
+      const supportNeeded = formData.get("support-needed");
+
+      // Discord Webhook URL
+      const webhookUrl = "https://discord.com/api/webhooks/1330122933049229374/Ry49GBL1G5n-cH1mocnS6uYbeYA2gD_t9hRSAT8togn9dJUFZEeajG4-TWfI1yxx9cfR";
+
+      // Prepare the message payload
+      const payload = {
+        username: "Support Form",
+        embeds: [
+          {
+            title: "New Support Request",
+            fields: [
+              { name: "Full Name", value: fullName, inline: true },
+              { name: "Email", value: email, inline: true },
+              { name: "Profile URL", value: profileUrl, inline: false },
+              { name: "Support Needed", value: supportNeeded, inline: false }
+            ],
+            footer: { text: "Support Form Submission" },
+            timestamp: new Date().toISOString()
+          }
+        ]
+      };
+
+      try {
+        const response = await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          alert("Your support request has been submitted!");
+          event.target.reset();
+        } else {
+          alert("Failed to send the request. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again later.");
+      }
+    });
+  </script>
+</body>
+</html>

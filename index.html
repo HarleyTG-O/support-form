@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harley's Clan Forum</title> <!-- Title updated -->
+  <title>Harley's Clan Forum</title>
   <style>
+    /* Your existing styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -30,17 +31,19 @@
       font-weight: bold;
     }
     input, textarea, button {
-      width: 100%;
+      width: calc(100% - 20px); /* Adjusted width to create space on the right */
       padding: 10px;
       margin-bottom: 15px;
       border: 1px solid #ddd;
       border-radius: 4px;
+      box-sizing: border-box; /* Ensures padding doesn't increase the width */
     }
     button {
       background: #007bff;
       color: #fff;
       border: none;
       cursor: pointer;
+      width: 100%; /* Make the button full width like the other fields */
     }
     button:hover {
       background: #0056b3;
@@ -52,10 +55,25 @@
     a:hover {
       text-decoration: underline;
     }
+    .terms-wrapper {
+      display: flex;
+      align-items: center; /* Align checkbox and text in one line */
+      font-size: 0.9rem; /* Adjusted size for better visual balance */
+      margin-top: 10px; /* Adds space above the checkbox */
+      margin-bottom: 20px; /* Adds space below the checkbox */
+    }
+    .terms-wrapper input {
+      margin-right: 5px; /* Smaller space between checkbox and text */
+      width: 18px; /* Reduce checkbox size */
+      height: 18px; /* Adjust height to match the reduced size */
+    }
+    .terms-wrapper label {
+      margin: 0; /* Remove default margin around label */
+    }
   </style>
 </head>
 <body>
-  <h1>Harley's Clan Forum - Support Form</h1> <!-- Updated heading text -->
+  <h1>Harley's Clan Forum - Support Form</h1>
   <form id="support-form">
     <label for="first-name">First Name</label>
     <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
@@ -67,16 +85,18 @@
     <input type="email" id="email" name="email" placeholder="Your Email" required>
 
     <label for="profile-url">Profile URL</label>
-    <input type="url" id="profile-url" name="profile-url" placeholder="https://forum.harleytg.online/u/" required>
+    <input type="url" id="profile-url" name="profile-url" value="https://forum.harleytg.online/u/" placeholder="https://forum.harleytg.online/u/" required>
 
     <label for="support-needed">Support Needed</label>
     <textarea id="support-needed" name="support-needed" placeholder="Describe the support you need..." required></textarea>
 
-    <label>
+    <div class="terms-wrapper">
       <input type="checkbox" id="agree" name="agree" required>
-      I agree to the <a href="https://forum.harleytg.online/p/5-terms-of-service" target="_blank">Terms & Conditions</a>
-      and <a href="https://forum.harleytg.online/p/4-privicy-policy" target="_blank">Privacy Policy</a>.
-    </label>
+      <label for="agree">
+        I agree to the <a href="https://forum.harleytg.online/p/5-terms-of-service" target="_blank">Terms & Conditions</a>
+        and <a href="https://forum.harleytg.online/p/4-privicy-policy" target="_blank">Privacy Policy</a>.<
+      </label>
+    </div>
 
     <button type="submit">Submit</button>
   </form>

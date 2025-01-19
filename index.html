@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,9 +99,6 @@
   <form id="support-form">
     <h1>Harley's Clan Forum - Support Form</h1>
 
-    <label for="support-id">Support ID</label>
-    <input type="text" id="support-id" name="support-id" placeholder="Support ID" readonly>
-
     <label for="first-name">First Name</label>
     <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
 
@@ -131,11 +129,8 @@
   document.getElementById("support-form").addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    // Generate a 4-digit Support ID
+    // Generate a 4-digit Support ID automatically for the webhook
     const supportId = Math.floor(1000 + Math.random() * 9000); // Generates a random 4-digit number
-
-    // Set the Support ID in the input field
-    document.getElementById("support-id").value = supportId;
 
     // Collect form data
     const formData = new FormData(event.target);
@@ -147,7 +142,7 @@
     // Discord Webhook URL
     const webhookUrl = "https://discord.com/api/webhooks/1330156339623755817/RdE4YhYzGiz90JcW_Hp8YrYrxJxfpoT1rjyW8YzzkuytZE9ttgUXd6zyyl_V7VzuUG6N";
 
-    // Prepare the message payload
+    // Prepare the message payload with the Support ID
     const payload = {
       username: "Harley's Forum - Support Form",
       embeds: [
@@ -175,7 +170,7 @@
 
       if (response.ok) {
         alert("Your support request has been submitted!");
-        event.target.reset();
+        event.target.reset(); // Reset form after submission
       } else {
         alert("Failed to send the request. Please try again.");
       }
@@ -187,4 +182,3 @@
   </script>
 </body>
 </html>
-

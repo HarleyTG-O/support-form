@@ -32,7 +32,6 @@
       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6); /* Added box shadow */
     }
 
-
     label {
       display: block;
       margin-bottom: 8px;
@@ -98,6 +97,10 @@
 <body>
   <form id="support-form">
     <h1>Harley's Clan Forum - Support Form</h1>
+
+    <label for="support-id">Support ID</label>
+    <input type="text" id="support-id" name="support-id" placeholder="Support ID" readonly>
+
     <label for="first-name">First Name</label>
     <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
 
@@ -184,3 +187,4 @@
   </script>
 </body>
 </html>
+

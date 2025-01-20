@@ -3,94 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harley's Clan Forum</title>
+  <title>Harley's Clan Forum - Support Form</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #1e1e1e;
+      background-color: #121212;
+      color: #f0f0f0;
     }
 
     h1 {
       text-align: center;
       color: #fff;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      margin-top: 40px;
+      font-size: 2.5rem;
+      font-weight: 600;
     }
 
     form {
       max-width: 600px;
-      margin: 20px auto;
-      background: rgba(50, 50, 50, 0.9);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #1c1c1c;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+      padding-left: 10px;
+      padding-right: 10px;
     }
 
     label {
-      display: block;
+      font-size: 1rem;
+      color: #ccc;
       margin-bottom: 8px;
-      font-weight: bold;
-      color: #fff;
+      display: block;
     }
 
-    input, select, textarea, button {
-      width: calc(100% - 20px);
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      background-color: #222;
+      color: #f0f0f0;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
       box-sizing: border-box;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-      background-color: #f9f9f9;
     }
 
-button {
-  background: rgba(0, 123, 255, 0.8);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-  display: block; /* Ensures the button is on a new line */
-  width: 100%; /* Makes the button span the entire width of the form */
-}
+    select {
+      width: 100%;
+    }
 
+    input:focus, select:focus, textarea:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
     button:hover {
-      background: rgba(0, 86, 179, 0.8);
-      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+      background-color: #0056b3;
     }
 
     .terms-wrapper {
       display: flex;
       align-items: center;
-      font-size: 0.85rem;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      color: #fff;
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 25px;
     }
 
     .terms-wrapper input {
-      margin-right: 5px;
       width: 16px;
       height: 16px;
-    }
-
-    .terms-wrapper label {
-      display: flex;
-      align-items: center;
+      margin-right: 8px;
     }
 
     .terms-wrapper a {
-      color: #00c2ed; /* Link color */
+      color: #00c2ed;
       text-decoration: none;
-      margin-left: 1px; /* Space between text and links */
-      margin-right: 1px; /* Space between text and links */
     }
 
     .terms-wrapper a:hover {
-      text-decoration: underline; /* Underline on hover */
+      text-decoration: underline;
     }
 
     .error {
@@ -98,103 +105,144 @@ button {
       font-size: 0.9rem;
       margin-bottom: 10px;
     }
- </style>
+
+    @media (max-width: 600px) {
+      form {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      button {
+        padding: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <form id="support-form">
-    <h1>Harley's Clan Forum - Support Form</h1>
+    <form id="support-form">
+      <h1>Harley's Clan Forum - Support Form</h1>
+  
+        <!-- Forum Username -->
+        <label for="forum-username">Forum Username</label>
+        <input type="text" id="forum-username" name="forum-username" placeholder="Enter Your Forum Username" required>
+        <input type="hidden" id="profile-url" name="profile-url">
+        <strong>Note:</strong> Your forum username will be used to generate your profile URL. Please ensure the case of your username is accurate. (e.g., https://forum.harleytg.online/u/username).
 
-    <label for="first-name">First Name</label>
-    <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+        <!-- Add space between sections -->
+        <br><br>
 
-    <label for="last-name">Last Name</label>
-    <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+        <!-- Discord Username (optional) -->
+        <label for="discord-username">Discord Username <small>(Optional)</small></label>
+        <input type="text" id="discord-username" name="discord-username" placeholder="Enter your Discord username (Optional)">
+        <strong>Note:</strong> Please ensure the case of your username is accurate. (e.g., Discord Usersname are all Lowercase).
+        <!-- Add space between sections -->
+        <br><br>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Your Email" required>
 
-    <label for="profile-url">Profile URL</label>
-    <input type="url" id="profile-url" name="profile-url" value="https://forum.harleytg.online/u/" placeholder="https://forum.harleytg.online/u/" required>
+      <!-- Email -->
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your Email" required>
+  
+      <!-- Support Type -->
+      <label for="support-needed">Support Needed</label>
+      <select id="support-needed" name="support-needed" required>
+        <option value="">Please select a support type</option>
+        <option value="General Support">General Support</option>
+        <option value="Name Change">Name Change</option>
+        <option value="Username Change">Username Change</option>
+        <option value="Account Deletion">Account Deletion</option>
+        <option value="Account Info Request">Account Info Request</option>
+      </select>
+  
+      <!-- Support Notes -->
+      <label for="support-notes">Support Needed Notes</label>
+      <textarea id="support-notes" name="support-notes" placeholder="Add any additional notes here..." required></textarea>
+  
+      <!-- Terms & Conditions -->
+      <div class="terms-wrapper">
+        <input type="checkbox" id="agree" name="agree" required>
+        <label for="agree">
+          I agree to the <a href="https://forum.harleytg.online/p/5-terms-of-service" target="_blank">Terms & Conditions</a>
+          and <a href="https://forum.harleytg.online/p/4-privicy-policy" target="_blank">Privacy Policy</a>.
+        </label>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit">Submit</button>
+    </form>
 
-    <label for="support-needed">Support Needed</label>
-    <select id="support-needed" name="support-needed" required>
-      <option value="">Please select a support type</option>
-      <option value="Name Change">Name Change</option>
-      <option value="Username Change">Username Change</option>
-      <option value="Account Deletion">Account Deletion</option>
-      <option value="Account Info Request">Account Info Request</option>
-    </select>
-
-    <label for="support-notes">Support Needed Notes</label>
-    <textarea id="support-notes" name="support-notes" placeholder="Add any additional notes here..." required></textarea>
-
-    <div class="terms-wrapper">
-      <input type="checkbox" id="agree" name="agree" required>
-      <label for="agree">
-        I agree to the  <a href="https://forum.harleytg.online/p/5-terms-of-service" target="_blank"> Terms & Conditions </a>
-        and  <a href="https://forum.harleytg.online/p/4-privicy-policy" target="_blank"> Privacy Policy </a>.
-      </label>
-    <button type="submit">Submit</button>
-  </form>
-
-  <script>
-  document.getElementById("support-form").addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    // Generate a 4-digit Support ID automatically for the webhook
-    const supportId = Math.floor(1000 + Math.random() * 9000); // Generates a random 4-digit number
-
-    // Collect form data
-    const formData = new FormData(event.target);
-    const fullName = `${formData.get("first-name")} ${formData.get("last-name")}`;
-    const email = formData.get("email");
-    const profileUrl = formData.get("profile-url");
-    const supportNeeded = formData.get("support-needed");
-    const supportNotes = formData.get("support-notes");
-
-    // Discord Webhook URL
-    const webhookUrl = "https://discord.com/api/webhooks/1330558014301929584/ZAf-kHE0jpi1miYygj7OkU1_IXl8zB6oGN6tiU8Zyky6dFAPMK8UTkSEO9ZJCFoOBDJa";
-
-    // Prepare the message payload with the Support ID
-    const payload = {
-      username: "Harley's Forum - Support Form",
-      content: "<@&1330556193780924528>", // Mention the role using its ID
-      embeds: [
-        {
-          title: "New Support Request",
-          fields: [
-            { name: "Support ID", value: supportId, inline: true },
-            { name: "Full Name", value: fullName, inline: true },
-            { name: "Email", value: email, inline: true },
-            { name: "Profile URL", value: profileUrl, inline: false },
-            { name: "Support Needed", value: supportNeeded, inline: false },
-            { name: "Support Notes", value: supportNotes, inline: false }
-          ],
-          footer: { text: "Support Form Submission" },
-          timestamp: new Date().toISOString()
-        }
-      ]
-    };
-
-    try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-
-      if (response.ok) {
-        alert("Your support request has been submitted!");
-        event.target.reset(); // Reset form after submission
-      } else {
-        alert("Failed to send the request. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("An error occurred. Please try again later.");
-    }
-  });
-  </script>
-</body>
-</html>
-
+    <script>
+        // Dynamically update the Profile URL based on the forum username input
+        document.getElementById("forum-username").addEventListener("input", function() {
+          const username = this.value;
+          const profileUrlField = document.getElementById("profile-url");
+    
+          // Update the hidden profile URL input with the full URL
+          if (username) {
+            profileUrlField.value = `https://forum.harleytg.online/u/${username}`;
+          } else {
+            profileUrlField.value = ""; // Clear the profile URL if username is empty
+          }
+        });
+    
+        // Handle form submission
+        document.getElementById("support-form").addEventListener("submit", async (event) => {
+          event.preventDefault();
+    
+          const supportId = Math.floor(1000 + Math.random() * 9000);
+    
+          const formData = new FormData(event.target);
+          const forumUsername = formData.get("forum-username");
+          const discordUsername = formData.get("discord-username");
+          const email = formData.get("email");
+          const profileUrl = formData.get("profile-url");
+          const supportNeeded = formData.get("support-needed");
+          const supportNotes = formData.get("support-notes");
+    
+          const webhookUrl = "https://discord.com/api/webhooks/1330558014301929584/ZAf-kHE0jpi1miYygj7OkU1_IXl8zB6oGN6tiU8Zyky6dFAPMK8UTkSEO9ZJCFoOBDJa";
+    
+          const payload = {
+            username: "Harley's Forum - Support Form",
+            content: "<@&1330556193780924528>", // Mention a specific role on Discord
+            embeds: [
+              {
+                title: "New Support Request",
+                fields: [
+                  { name: "Support ID", value: supportId, inline: true },
+                  { name: "Forum Username", value: forumUsername, inline: true },
+                  { name: "Discord Username", value: discordUsername || "Not Provided", inline: true },
+                  { name: "Email", value: email, inline: true },
+                  { name: "Profile URL", value: profileUrl, inline: false },
+                  { name: "Support Needed", value: supportNeeded, inline: false },
+                  { name: "Support Notes", value: supportNotes, inline: false }
+                ],
+                footer: { text: "Support Form Submission" },
+                timestamp: new Date().toISOString()
+              }
+            ]
+          };
+    
+          try {
+            const response = await fetch(webhookUrl, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            });
+    
+            if (response.ok) {
+              alert("Your support request has been submitted!");
+              event.target.reset();
+            } else {
+              alert("Failed to send the request. Please try again.");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again later.");
+          }
+        });
+      </script>
+    </body>
+    </html>

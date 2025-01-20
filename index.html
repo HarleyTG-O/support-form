@@ -5,93 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harley's Clan Forum</title>
   <style>
-    /* Full transparency for body */
+  <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: transparent; /* Transparent background */
+      background-color: #1e1e1e;
     }
 
-    /* Move h1 inside the form */
     h1 {
       text-align: center;
-      color: #333;
-      background-color: transparent; /* Transparent background */
-      margin-bottom: 20px; /* Add margin for space */
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Added text shadow */
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     }
 
-    /* Form background with box shadow */
     form {
       max-width: 600px;
-      margin: 20px auto; /* Added 20px margin on top and bottom */
-      background: rgba(50, 50, 50, 0.8); /* Grayish black with transparency */
+      margin: 20px auto;
+      background: rgba(50, 50, 50, 0.9);
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6); /* Added box shadow */
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
     }
 
     label {
       display: block;
       margin-bottom: 8px;
       font-weight: bold;
-      color: #fff; /* Text color changed to white for better contrast */
+      color: #fff;
     }
 
-    input, textarea, button, select {
-      width: calc(100% - 20px); /* Adjusted width to create space on the right */
+    input, select, textarea, button {
+      width: calc(100% - 20px);
       padding: 10px;
       margin-bottom: 15px;
-      border: 1px solid rgba(0, 0, 0, 0.1); /* Transparent border */
+      border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 4px;
-      box-sizing: border-box; /* Ensures padding doesn't increase the width */
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Added input shadow */
+      box-sizing: border-box;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+      background-color: #f9f9f9;
     }
 
-    /* Button with box shadow */
     button {
-      background: rgba(0, 123, 255, 0.8); /* Slight transparency for the button */
+      background: rgba(0, 123, 255, 0.8);
       color: #fff;
       border: none;
       cursor: pointer;
-      width: 100%; /* Make the button full width like the other fields */
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Added shadow to button */
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
     }
 
-    /* Button hover effect with shadow change */
     button:hover {
-      background: rgba(0, 86, 179, 0.8); /* Slightly darker transparent background on hover */
-      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
-    }
-
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
+      background: rgba(0, 86, 179, 0.8);
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
     }
 
     .terms-wrapper {
       display: flex;
-      align-items: center; /* Align checkbox and text in one line */
-      font-size: 0.9rem; /* Adjusted size for better visual balance */
-      margin-top: 10px; /* Adds space above the checkbox */
-      margin-bottom: 20px; /* Adds space below the checkbox */
+      align-items: center;
+      font-size: 0.85rem;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      color: #fff;
     }
 
     .terms-wrapper input {
-      margin-right: 5px; /* Smaller space between checkbox and text */
-      width: 18px; /* Reduce checkbox size */
-      height: 18px; /* Adjust height to match the reduced size */
+      margin-right: 5px;
+      width: 16px;
+      height: 16px;
     }
 
-    .terms-wrapper label {
-      margin: 0; /* Remove default margin around label */
-      color: #fff; /* White text for terms & conditions */
+    .error {
+      color: #ff4d4d;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
     }
+  </style>
   </style>
 </head>
 <body>

@@ -135,13 +135,12 @@
         <!-- Add space between sections -->
         <br><br>
 
-        <!-- Discord Username (optional) -->
-        <label for="discord-username">Discord Username <small>(Optional)</small></label>
-        <input type="text" id="discord-username" name="discord-username" placeholder="Enter your Discord username (Optional)">
-        <strong>Note:</strong> Please ensure the case of your username is accurate. (e.g., Discord Usersname are all Lowercase).
-        <!-- Add space between sections -->
-        <br><br>
-
+      <!-- discord username (optional) -->
+      <label for="discord-username">Discord Username <small>(Optional)</small></label>
+      <input type="text" id="discord-username" name="discord-username" placeholder="Enter your Discord username (Optional)" oninput="checkLowercase()">
+      <strong>Note:</strong> Please ensure the case of your username is accurate. (e.g., Discord Usernames are all lowercase).
+      <!-- Add space between sections -->
+      <br><br>
 
       <!-- Email -->
       <label for="email">Email</label>
@@ -188,7 +187,18 @@
             profileUrlField.value = ""; // Clear the profile URL if username is empty
           }
         });
-    
+
+      function checkLowercase() {
+          const input = document.getElementById('discord-username');
+          const value = input.value;
+          const isLowercase = /^[a-z]+$/.test(value); // Regular expression to check if the string is all lowercase
+      
+          if (!isLowercase) {
+              input.setCustomValidity('Username must be all lowercase letters.');
+          } else {
+              input.setCustomValidity('');
+          }
+      }
         // Handle form submission
         document.getElementById("support-form").addEventListener("submit", async (event) => {
           event.preventDefault();
